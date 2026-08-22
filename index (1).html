@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faisal Hussain — Cloud Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E13;
+    --surface:#111820;
+    --surface-2:#161F29;
+    --line:#232E3A;
+    --text:#E9EEF3;
+    --muted:#8695A4;
+    --accent:#FF9900;
+    --accent-2:#4FD1C5;
+    --accent-soft:rgba(255,153,0,0.12);
+    --radius:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#0A0E13;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  .container{max-width:1080px;margin:0 auto;padding:0 32px;}
+  section{padding:96px 0;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent-2);
+    font-size:13px;
+    letter-spacing:0.06em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"//";color:var(--muted);}
+  h2.section-title{font-size:clamp(28px,4vw,38px);font-weight:600;margin-bottom:40px;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;
+    background:rgba(10,14,19,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    z-index:100;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:18px;
+    width:38px;height:38px;
+    border:1px solid var(--accent);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+  }
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-size:14px;color:var(--muted);transition:color 0.2s;}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text);outline:none;}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    padding:8px 16px;
+    border:1px solid var(--accent);
+    border-radius:6px;
+    color:var(--accent);
+    transition:background 0.2s,color 0.2s;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible{background:var(--accent);color:#0A0E13;outline:none;}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:8px 10px;font-size:18px;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:80px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  #net-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;}
+  .hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 32px;width:100%;}
+  .status-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;font-size:13px;
+    padding:6px 14px;border:1px solid var(--line);border-radius:999px;
+    color:var(--muted);margin-bottom:28px;background:rgba(17,24,32,0.6);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(79,209,197,0.5);}50%{opacity:0.6;box-shadow:0 0 0 6px rgba(79,209,197,0);}}
+  .hero h1{font-size:clamp(40px,7vw,72px);font-weight:700;line-height:1.05;margin-bottom:18px;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero .role{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent-2);font-size:clamp(16px,2.2vw,20px);
+    margin-bottom:22px;
+  }
+  .hero p.desc{max-width:560px;color:var(--muted);font-size:17px;margin-bottom:36px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px;}
+  .btn{
+    font-family:'Inter',sans-serif;font-weight:500;font-size:15px;
+    padding:13px 24px;border-radius:8px;transition:transform 0.15s, background 0.2s, border-color .2s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--accent);color:#0A0E13;}
+  .btn-primary:hover, .btn-primary:focus-visible{transform:translateY(-2px);outline:none;}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--accent-2);transform:translateY(-2px);outline:none;}
+  .hero-meta{
+    display:flex;gap:40px;flex-wrap:wrap;
+    padding-top:28px;border-top:1px solid var(--line);
+  }
+  .hero-meta div{font-family:'JetBrains Mono',monospace;}
+  .hero-meta .num{font-size:22px;color:var(--text);font-weight:600;}
+  .hero-meta .label{font-size:12px;color:var(--muted);margin-top:2px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{color:var(--muted);margin-bottom:18px;font-size:16px;}
+  .about-grid strong{color:var(--text);}
+  .stat-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .stat-row{display:flex;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);background:var(--surface);}
+  .stat-row:last-child{border-bottom:none;}
+  .stat-row .k{color:var(--muted);font-size:14px;}
+  .stat-row .v{font-family:'JetBrains Mono',monospace;color:var(--accent-2);font-size:14px;}
+
+  /* TIMELINE (Education) */
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:"";position:absolute;left:-32px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);}
+  .t-item .date{font-family:'JetBrains Mono',monospace;color:var(--accent-2);font-size:13px;margin-bottom:6px;}
+  .t-item h3{font-size:19px;margin-bottom:4px;}
+  .t-item .org{color:var(--muted);font-size:14px;margin-bottom:10px;}
+  .t-item .body{color:var(--muted);font-size:15px;max-width:620px;}
+
+  /* SKILLS */
+  .skills-group{margin-bottom:32px;}
+  .skills-group:last-child{margin-bottom:0;}
+  .skills-group h3{font-size:14px;color:var(--muted);font-weight:500;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.05em;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:13px;
+    padding:8px 14px;border:1px solid var(--line);border-radius:6px;
+    background:var(--surface);color:var(--text);
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .tag:hover{border-color:var(--accent);color:var(--accent);}
+  .tag::before{content:"--";color:var(--muted);}
+
+  /* PROJECTS */
+  .proj-note{
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);
+    border:1px dashed var(--line);padding:14px 16px;border-radius:8px;margin-bottom:32px;
+  }
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .proj-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;transition:border-color 0.2s, transform 0.2s;
+  }
+  .proj-card:hover{border-color:var(--accent-2);transform:translateY(-3px);}
+  .proj-card h3{font-size:18px;margin-bottom:10px;}
+  .proj-card p{color:var(--muted);font-size:14px;margin-bottom:18px;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .proj-tags span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);background:rgba(79,209,197,0.08);padding:4px 9px;border-radius:4px;}
+
+  /* CERTIFICATIONS */
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+  .cert-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative;}
+  .cert-card .badge{
+    position:absolute;top:22px;right:22px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:3px 10px;
+  }
+  .cert-card h3{font-size:17px;margin-bottom:4px;padding-right:90px;}
+  .cert-card .issuer{color:var(--accent-2);font-size:13px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;}
+  .cert-card p{color:var(--muted);font-size:14px;}
+
+  /* CONTACT */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:36px;}
+  .contact-card h3{font-size:22px;margin-bottom:12px;}
+  .contact-card p{color:var(--muted);margin-bottom:26px;font-size:15px;}
+  .contact-line{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;}
+  .contact-line:first-of-type{border-top:none;}
+  .contact-line .k{color:var(--muted);width:90px;font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;}
+  .social-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:36px;display:flex;flex-direction:column;justify-content:space-between;}
+  .social-list{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
+  .social-list a{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 16px;border:1px solid var(--line);border-radius:8px;
+    font-size:14px;transition:border-color 0.2s, background 0.2s;
+  }
+  .social-list a:hover{border-color:var(--accent);background:var(--surface-2);}
+  .social-list .arrow{color:var(--accent);}
+
+  footer{padding:32px;text-align:center;color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width:820px){
+    .about-grid, .contact-wrap{grid-template-columns:1fr;}
+    .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:20px 32px;display:none;gap:18px;}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo mono">FH</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+</nav>
+
+<section class="hero">
+  <canvas id="net-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="status-pill"><span class="dot"></span> Available for opportunities</div>
+    <h1>Faisal Hussain</h1>
+    <div class="role mono">$ cloud-engineer --focus=aws,networking</div>
+    <p class="desc">Cloud Engineer focused on AWS infrastructure and networking fundamentals. Currently building hands-on skills in cloud computing and AI through Jetking Lucknow, backed by a Computer Applications degree from Galgotias University.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn btn-ghost">View Projects</a>
+      <a href="#certifications" class="btn btn-ghost">View Certifications</a>
+    </div>
+    <div class="hero-meta">
+      <div><div class="num">2025</div><div class="label">B.Tech Graduate</div></div>
+      <div><div class="num">2</div><div class="label">Certifications</div></div>
+      <div><div class="num">AWS</div><div class="label">Cloud Focus</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <div class="eyebrow">about</div>
+      <h2 class="section-title">Who I am</h2>
+      <p><strong>Cloud Engineer</strong> building a foundation in AWS infrastructure, networking, and cloud computing practices. I completed my Bachelor of Technology from Galgotias University in 2025, and I'm currently deepening my expertise through Jetking Lucknow's Cloud Computing with AI program (2026).</p>
+      <p>My focus areas are core AWS services, network fundamentals, and understanding how cloud platforms are secured and scaled — with growing interest in how AI is integrated into modern cloud workflows.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat-row"><span class="k">Graduation</span><span class="v">2025</span></div>
+      <div class="stat-row"><span class="k">Current Program</span><span class="v">Cloud + AI, 2026</span></div>
+      <div class="stat-row"><span class="k">Focus Platform</span><span class="v">AWS</span></div>
+      <div class="stat-row"><span class="k">Location</span><span class="v">India</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="eyebrow">education</div>
+    <h2 class="section-title">Academic background</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="date mono">2026 — Present</div>
+        <h3>Cloud Computing with AI</h3>
+        <div class="org">Jetking, Lucknow</div>
+        <p class="body">Hands-on training in cloud computing fundamentals alongside applied AI concepts, building on core AWS and networking knowledge.</p>
+      </div>
+      <div class="t-item">
+        <div class="date mono">2021 — 2025</div>
+        <h3>Bachelor of Technology</h3>
+        <div class="org">Galgotias University</div>
+        <p class="body">Undergraduate engineering foundation covering core computing, programming, and systems concepts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="eyebrow">skills</div>
+    <h2 class="section-title">Technical toolkit</h2>
+
+    <div class="skills-group">
+      <h3>Cloud Platforms</h3>
+      <div class="tag-row">
+        <span class="tag">aws-ec2</span>
+        <span class="tag">aws-s3</span>
+        <span class="tag">aws-iam</span>
+        <span class="tag">aws-vpc</span>
+        <span class="tag">cloud-fundamentals</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <h3>Networking</h3>
+      <div class="tag-row">
+        <span class="tag">tcp-ip</span>
+        <span class="tag">dns</span>
+        <span class="tag">subnetting</span>
+        <span class="tag">routing</span>
+        <span class="tag">firewalls</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <h3>Systems & Tools</h3>
+      <div class="tag-row">
+        <span class="tag">linux</span>
+        <span class="tag">shell-scripting</span>
+        <span class="tag">git</span>
+        <span class="tag">github</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <h3>Emerging Focus</h3>
+      <div class="tag-row">
+        <span class="tag">ai-fundamentals</span>
+        <span class="tag">cloud-security-basics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="eyebrow">projects</div>
+    <h2 class="section-title">Project work</h2>
+    <div class="proj-note">These are starter project ideas matched to your skillset — swap in your real projects (with GitHub links) once you've built and pushed them.</div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <h3>EC2 Web Server Deployment</h3>
+        <p>Provisioned and configured an AWS EC2 instance to host a web application, including security group rules and basic monitoring.</p>
+        <div class="proj-tags"><span>AWS EC2</span><span>Security Groups</span><span>Linux</span></div>
+      </div>
+      <div class="proj-card">
+        <h3>VPC Network Architecture</h3>
+        <p>Designed a custom VPC with public and private subnets, route tables, and an internet gateway to practice core networking concepts.</p>
+        <div class="proj-tags"><span>AWS VPC</span><span>Subnetting</span><span>Routing</span></div>
+      </div>
+      <div class="proj-card">
+        <h3>Static Site Hosting on S3</h3>
+        <p>Deployed a static website using S3 static hosting, with IAM policies scoped for secure public access.</p>
+        <div class="proj-tags"><span>AWS S3</span><span>IAM</span><span>Cloud Hosting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="container">
+    <div class="eyebrow">certifications</div>
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <span class="badge">Certified</span>
+        <h3>AWS Cloud Essentials</h3>
+        <div class="issuer">Amazon Web Services</div>
+        <p>Foundational certification covering core AWS services, cloud concepts, pricing, and best practices for building on AWS.</p>
+      </div>
+      <div class="cert-card">
+        <span class="badge">Certified</span>
+        <h3>Networking Fundamentals</h3>
+        <div class="issuer">Networking</div>
+        <p>Core networking certification covering TCP/IP, DNS, subnetting, routing, and network security fundamentals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="container">
+    <div class="eyebrow">contact</div>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <h3>Let's talk</h3>
+        <p>I'm actively looking for Cloud Engineer opportunities. Feel free to reach out — I usually respond within a day.</p>
+        <div class="contact-line"><span class="k">Email</span><a href="mailto:husainfaisal466@gmail.com">husainfaisal466@gmail.com</a></div>
+        <div class="contact-line"><span class="k">Phone</span><a href="tel:+918917863309">+91 89178 63309</a></div>
+        <div class="contact-line"><span class="k">Location</span><span>India</span></div>
+      </div>
+      <div class="social-card">
+        <div>
+          <h3>Connect</h3>
+          <p>Find me on the platforms below.</p>
+        </div>
+        <div class="social-list">
+          <a href="https://www.linkedin.com/in/faisal-hussain-9326a8249/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub (add your username) <span class="arrow">→</span></a>
+          <a href="mailto:husainfaisal466@gmail.com">Email <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Faisal Hussain. Built with HTML, CSS &amp; JavaScript.</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // network node background
+  const canvas = document.getElementById('net-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  }
+  function initNodes(){
+    const count = Math.max(18, Math.floor((w*h)/45000));
+    nodes = Array.from({length:count}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      vx: (Math.random()-0.5)*0.25,
+      vy: (Math.random()-0.5)*0.25,
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<nodes.length;i++){
+      const n = nodes[i];
+      if(!reduceMotion){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x<0||n.x>w) n.vx*=-1;
+        if(n.y<0||n.y>h) n.vy*=-1;
+      }
+    }
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const dist = Math.hypot(a.x-b.x, a.y-b.y);
+        if(dist < 150){
+          ctx.strokeStyle = `rgba(79,209,197,${0.12*(1-dist/150)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.fillStyle = 'rgba(255,153,0,0.55)';
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,1.8,0,Math.PI*2);
+      ctx.fill();
+    }
+    if(!reduceMotion) requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+  resize(); initNodes(); draw();
+</script>
+
+</body>
+</html>
